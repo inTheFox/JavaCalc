@@ -14,6 +14,10 @@ public class Main {
         String inputLine = in.nextLine();
         in.close();
         String[] inputLetters = inputLine.split(" ");
+        if (inputLetters.length < 3)
+        {
+            throw new Exception("Ошибка при анализе выражения.");
+        }
 
         a = ParseNumber(inputLetters[0]);
         b = ParseNumber(inputLetters[2]);
