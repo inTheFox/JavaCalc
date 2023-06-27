@@ -3,7 +3,7 @@ import java.util.Scanner;
 import static java.lang.System.out;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
         int a;
         int b;
@@ -19,8 +19,7 @@ public class Main {
         b = ParseNumber(inputLetters[2]);
 
         if (a < 0 || b < 0) {
-            out.println("Введенное Вами выражение имеет отрицательные величины, или является некорректным.");
-            return;
+            throw new Exception("Введенное Вами выражение имеет отрицательные величины");
         }
 
         switch (inputLetters[1])
@@ -42,7 +41,7 @@ public class Main {
 
     }
 
-    private static int ParseNumber(String s) {
+    private static int ParseNumber(String s) throws Exception {
         switch (s) {
             case "I":
                 return 1;
@@ -67,9 +66,10 @@ public class Main {
         }
         try {
             return Integer.parseInt(s);
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
-            return -1;
+            throw new Exception("Введенное Вами выражение является некорректным.");
         }
     }
 }
